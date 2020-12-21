@@ -1,0 +1,23 @@
+<div class="row justify-content-center animate__animated animate__tada my-4">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title text-center">Juegos de Dados</h3>
+        <div class="my-2 alert alert-dark" role="alert">
+          <span>{{ resultado }}</span>
+        </div>
+        <div class="d-flex justify-content-around">
+          <app-simple numero="{{ valor1 }}"></app-simple>
+          <app-simple numero="{{ valor2 }}"></app-simple>
+          <app-simple numero="{{ valor3 }}"></app-simple>
+        </div>
+        <div class="d-flex justify-content-around">
+          <a class="btn btn-secondary" routerLink="/acercade">Ir a acerca De</a>
+          <button type="button" class="btn btn-primary" (click)="tirarDados()">
+            JUGAR
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

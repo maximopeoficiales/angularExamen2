@@ -1,0 +1,99 @@
+<div class="container mx-auto my-4 animate__animated animate__backInUp">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div
+              class="col-md-6 d-flex align-items-center justify-content-center"
+            >
+              <h3 class="font-weight-bold">{{ factura.name }}</h3>
+            </div>
+            <div class="col-md-6">
+              <table class="table text-center rounded-top">
+                <thead class="bg-dark text-white">
+                  <tr>
+                    <th>ID Invoce</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ factura.id }}</td>
+                    <td>{{ factura.date_created }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <section class="col-md-6">
+              <div class="rounded-top bg-dark text-white p-2 my-1">
+                <h6 class="font-weight-bold text-center">Client</h6>
+              </div>
+              <div class="p-2">
+                <p class="m-0"><strong>DNI:</strong> {{ factura.client.id }}</p>
+                <p class="m-0">
+                  <strong>Name:</strong> {{ factura.client.name }}
+                </p>
+                <p class="m-0">
+                  <strong>Address:</strong> {{ factura.client.address }}
+                </p>
+                <p class="m-0">
+                  <strong>Postcode: </strong>{{ factura.client.postcode }}
+                </p>
+                <p class="m-0">
+                  <strong>Email: </strong>{{ factura.client.email }}
+                </p>
+              </div>
+            </section>
+            <div class="col-md-6"></div>
+          </div>
+          <div class="row my-2">
+            <div class="col-md-12">
+              <table class="table text-center rounded-top">
+                <thead class="bg-dark text-white">
+                  <tr>
+                    <th>Img</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of factura.line_items">
+                    <td>
+                      <img
+                        src="{{ product.image_url }}"
+                        class="img-fluid"
+                        style="height: 60px; width: 60px"
+                      />
+                    </td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.quantity * product.price }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md 12">
+              <div class="text-center d-flex justify-content-between text-white">
+                <p class="p-2 bg-dark font-weight-bold h5 rounded text-white">
+                  SubTotal: {{ factura.getTotal() }}
+                </p>
+                <p class="p-2 bg-dark font-weight-bold h5 rounded text-white">
+                  Total: {{ factura.getTotal() * 1.18 }}
+                </p>
+                <!-- <p></p> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

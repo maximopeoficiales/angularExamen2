@@ -1,0 +1,105 @@
+<div class="row justify-content-center my-4">
+  <div class="col-md-4">
+    <div class="card animate__animated animate__fadeInUp">
+      <div class="card-body">
+        <form [formGroup]="formularioContacto" (ngSubmit)="formSubmit()">
+          <div class="form-group">
+                <label for="exampleFormControlInput1">Ingresar Nombre</label>
+                <input
+              type="text"
+              formControlName="nombre"
+              class="form-control"
+              required
+              placeholder="Ingresar Nombre"
+            />
+            <div
+              *ngIf="formularioContacto.get('nombre').hasError('required')"
+              class="m-0"
+            >
+              <div class="alert alert-danger my-2" role="alert">
+                <strong> El nombre no puede quedar vacío </strong>
+              </div>
+            </div>
+            <div
+              *ngIf="formularioContacto.get('nombre').hasError('minlength')"
+              class="m-0"
+            >
+              <div class="alert alert-danger my-2" role="alert">
+                <strong>Debe tener como mínimo 4 caracteres</strong>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+                <label for="exampleFormControlInput1">Ingresar Mail</label>
+                <input
+              type="text"
+              formControlName="mail"
+              class="form-control"
+              required
+              placeholder="Ingresar Mail"
+            />
+            <div *ngIf="formularioContacto.get('mail').hasError('email')">
+              <div class="alert alert-danger my-2" role="alert">
+                <strong>El mail no es válido</strong>
+              </div>
+                
+            </div>
+          </div>
+          <div class="form-group">
+                <label for="exampleFormControlInput1">AÑo de Nacimiento</label>
+                <input
+              type="number"
+              formControlName="age"
+              class="form-control"
+              required
+              placeholder="Año de Nacimiento"
+            />
+            <div *ngIf="formularioContacto.get('age').hasError('required')">
+              <div class="alert alert-danger my-2" role="alert">
+                <strong>El campo age es requerido</strong>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+                <label for="exampleFormControlTextarea1">Mensaje</label>
+                <textarea
+              class="form-control rounded-0"
+              formControlName="mensaje"
+              rows="3"
+            ></textarea>
+            <div *ngIf="formularioContacto.get('mensaje').hasError('required')">
+              <div class="alert alert-danger my-2" role="alert">
+                <strong> El mensaje no puede quedar vacío </strong>
+              </div>
+            </div>
+            <div *ngIf="formularioContacto.get('mensaje').errors?.maxlength">
+              <div class="alert alert-danger my-2" role="alert">
+                <strong>Debe tener como máximo 100 caracteres </strong>
+              </div>
+            </div>
+          </div>
+          <!-- si no es valido no se habilitara el boton -->
+            <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="formularioContacto.invalid"
+          >
+            Confirmar
+          </button>
+            <button type="reset" class="btn btn-danger">Limpiar</button>
+        </form>
+      </div>
+    </div>
+    <div class="alert alert-primary my-2" role="alert" *ngIf="resultado != ''">
+      {{ resultado }}
+    </div>
+  </div>
+  <div class="col-md-4">
+    <ul class="list-group" *ngIf="data.nombre != ''">
+      <li class="list-group-item">Nombre: {{ data.nombre }}</li>
+      <li class="list-group-item">Email: {{ data.mail }}</li>
+      <li class="list-group-item">Edad: {{ data.age }}</li>
+      <li class="list-group-item">Mensaje: {{ data.mensaje }}</li>
+    </ul>
+  </div>
+</div>
