@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RelojComponent } from './cronometro/reloj/reloj.component';
+import { CronopadreComponent } from './cronoreal/cronopadre/cronopadre.component';
 import { TemplateComponent } from './factura/template/template.component';
 import { FormReactivoComponent } from './formulario/form-reactivo/form-reactivo.component';
 import { AcercaDeComponent } from './juego/acerca-de/acerca-de.component';
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'cards',
     component: CardComponent,
+  },
+  {
+    path: 'crono',
+    component: CronopadreComponent,
   },
 ];
 

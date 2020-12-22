@@ -9,6 +9,7 @@ import { JuegoModule } from './juego/juego.module';
 import { FormularioModule } from './formulario/formulario.module';
 import { FacturaModule } from './factura/factura.module';
 import { LibreModule } from './libre/libre.module';
+import { CronorealModule } from './cronoreal/cronoreal.module';
 
 //importa los modulos que usaras
 @NgModule({
@@ -20,6 +21,7 @@ import { LibreModule } from './libre/libre.module';
     FormularioModule,
     FacturaModule,
     LibreModule,
+    CronorealModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
