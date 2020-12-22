@@ -1,5 +1,56 @@
 <div class="container mx-auto my-4 animate__animated animate__backInUp">
   <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Agregue un Producto</h4>
+          <div class="card-text">
+            <div class="form-group">
+              <label for="">Description</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="description"
+              />
+            </div>
+            <div class="form-group">
+              <label for="">Quantity</label>
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="quantity"
+              />
+            </div>
+            <div class="form-group">
+              <label for="">Price</label>
+              <input type="number" class="form-control" [(ngModel)]="price" />
+            </div>
+            <div class="form-group">
+              <label for="">Image_URl</label>
+              <input type="text" class="form-control" [(ngModel)]="image_url" />
+            </div>
+            <ng-container *ngIf="!actulizar; else elseTemplate">
+              <button
+                type="button"
+                class="btn btn-success btn-block block"
+                (click)="agregarProducto()"
+              >
+                Add Product
+              </button>
+            </ng-container>
+            <ng-template #elseTemplate>
+              <button
+                type="button"
+                class="btn btn-dark btn-block block"
+                (click)="actualizarProducto(id)"
+              >
+                Update Product
+              </button>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="col-md-8">
       <div class="card">
         <div class="card-body">
@@ -59,6 +110,7 @@
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Subtotal</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -74,6 +126,22 @@
                     <td>{{ product.quantity }}</td>
                     <td>{{ product.price }}</td>
                     <td>{{ product.quantity * product.price }}</td>
+                    <td class="d-flex justify-content-between">
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-sm"
+                        (click)="seleccionarProducto(product.id)"
+                      >
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-danger btn-sm"
+                        (click)="borrarProducto(product.id)"
+                      >
+                        <i class="fas fa-trash-alt"></i>
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -81,12 +149,14 @@
           </div>
           <div class="row">
             <div class="col-md 12">
-              <div class="text-center d-flex justify-content-between text-white">
+              <div
+                class="text-center d-flex justify-content-between text-white"
+              >
                 <p class="p-2 bg-dark font-weight-bold h5 rounded text-white">
                   SubTotal: {{ factura.getTotal() }}
                 </p>
                 <p class="p-2 bg-dark font-weight-bold h5 rounded text-white">
-                  Total: {{ factura.getTotal() * 1.18 }}
+                  Total: {{ (factura.getTotal() * 1.18).toFixed(2) }}
                 </p>
                 <!-- <p></p> -->
               </div>

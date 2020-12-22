@@ -23,7 +23,7 @@ export class DataService {
     },
     line_items: [
       {
-        id: 2,
+        id: 1,
         description: 'PS5',
         quantity: 1,
         price: 3000,
@@ -31,7 +31,7 @@ export class DataService {
           'https://hardzone.es/app/uploads-hardzone.es/2020/10/PS5.jpg',
       },
       {
-        id: 3,
+        id: 2,
         description: 'Laptops',
         quantity: 4,
         price: 1000,
@@ -39,7 +39,7 @@ export class DataService {
           'https://images-na.ssl-images-amazon.com/images/I/41+ohb81CrL._AC_SR400,600_.jpg',
       },
       {
-        id: 4,
+        id: 3,
         description: 'Mouse',
         quantity: 1,
         price: 10,
@@ -47,7 +47,7 @@ export class DataService {
           'https://http2.mlstatic.com/D_NQ_NP_736263-MPE30634051036_052019-V.jpg',
       },
       {
-        id: 5,
+        id: 4,
         description: 'Perfume',
         quantity: 3,
         price: 30,
